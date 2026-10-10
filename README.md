@@ -1,43 +1,46 @@
-# Automotive-hmidesign-hc-Jobhunting
+# Automotive Design Hiring Radar
 
-问题
-车企校招/实习设计岗的开放时间不固定,学生常常在 HC 快关时才知道在招。作品集和面试都准备好了,栽在时机上。
+A Claude skill for automotive HMI and cockpit design students seeking internships and graduate roles. It connects career direction with current openings at automakers and suppliers, then helps set up reminders for new roles and approaching deadlines.
 
-它怎么解决
+## Why it exists
 
-上传简历 → 判断可投方向,给出能直接拿去搜索的岗位名,并算出距毕业几个月、当前处在哪个招聘窗口
-回答三个问题 → 城市、公司范围、岗位类型。不知道你的偏好就推荐,等于让你在无关公司里筛
-输出推荐 → 每家公司说清它为什么现在缺这个岗,附薪资区间、落户政策、投递入口、当前状态;没开的给出上届开放月份和今年的预计时间
-设置每日推送 → 每天自动扫一遍这些公司,新开岗和临近截止推到手机
+Automotive design internships and graduate programmes open on different schedules. A student may have a portfolio ready and still discover a suitable role shortly before applications close. Searching also takes time when the student is unsure which job titles, company types or recruitment windows fit their background.
 
-## 怎么用
+This workflow combines those tasks. It uses a CV or a short profile to identify relevant design directions, checks official recruitment channels for current opportunities, and explains why each recommendation fits. The channel list and recruitment-window guidance focus on China's automotive hiring market.
 
-**Claude 网页版 / 桌面版 / Cowork:** 下载本仓库的 `automotive-hc-radar.skill` 文件(或把整个文件夹打包),发到对话里点 Save skill 安装;之后说"帮我看看哪家车企开了设计岗名额"即可触发。
+## How it works
 
-**Claude Code:** 把 `automotive-hc-radar/` 文件夹攽进 `~/.claude/skills/`。
+Share your CV, or describe your education, graduation year, portfolio focus and experience. The skill suggests a primary direction and, where useful, one adjacent direction, with job titles you can search for and an assessment of the current internship or graduate recruitment window. If you already know your direction, you can go straight to an openings scan.
 
-自动推送功能依赖 Claude 的定时任务能力(云端会话),本地会话会自动降级为"手动扫描指令"。
+Your preferred cities, company types and role types guide the search. Results distinguish confirmed openings from opportunities whose status could not be verified, include official application links where available, and explain fit and timing. Salary ranges, relocation policies and estimated future opening dates are supporting context when reliable information is available; estimates should remain labelled as estimates.
 
-## 仓库结构
+After the initial scan, you can choose a company scope and reminder frequency. Automatic monitoring depends on the host's scheduling tools and notification support. When those tools are unavailable, the workflow provides a manual scan prompt instead of claiming that monitoring is running.
 
-```
+## Use the skill
+
+For a Claude environment that supports custom skill uploads, download this repository and package `SKILL.md` and its `references/` directory together, following that environment's skill installation instructions. For Claude Code, place the repository folder at `~/.claude/skills/automotive-hc-radar/`, keeping `SKILL.md` at the folder root. The repository provides skill instructions and reference files; it is not a standalone recruitment application.
+
+You can start with: “Help me find automotive HMI design internships that fit my CV,” or “Check which automakers and suppliers are hiring graduate cockpit designers in my preferred cities.” The current skill and reference material are written in Chinese for the hiring market they cover; this public overview is in English.
+
+## Repository structure
+
+```text
 automotive-hc-radar/
-├── SKILL.md                      # 主流程:分流 → 方向评估+扫描(并行) → 推送设置
+├── SKILL.md                      # Workflow and operating rules
+├── automotive-jobhunting.md      # Additional job-search material
 └── references/
-    ├── channels.md               # ~45 家公司官方招聘入口清单(核心数据源)
-    ├── direction-map.md          # 方向判定信号、投递时机规则、公司侧重、推荐逻辑
-    ├── detection.md              # 扫描执行方法、"新开岗"判定、输出格式
-    └── push-setup.md             # 定时推送设置、cron 换算、自包含 prompt 模板
+    ├── channels.md               # Official recruitment channels for about 45 companies
+    ├── direction-map.md          # Direction, timing and company-fit guidance
+    ├── detection.md              # Scanning and opening-status reporting
+    └── push-setup.md             # Scheduled monitoring and fallback setup
 ```
 
-## 关于数据源
+## Sources and maintenance
 
-`references/channels.md` 里的招聘入口 URL 于 2026 年 8 月逐家调研验证。招聘站会改版、校招域名会按届次更换(清单里已标注已知规律),skill 内置了兜底搜索策略,但**清单本身需要维护**——发现失效链接或新渠道,欢迎提 PR。
+The recruitment URLs in `references/channels.md` were originally researched in August 2026. Recruitment sites and cohort-specific domains change, so this is a maintained starting list rather than a guarantee that every link remains current. The workflow includes fallback searches; corrections and new official channels are welcome through pull requests.
 
-## 免责声明
-
-本项目不隶属于任何车企或招聘平台。开岗信息以各公司官方渠道为准;"检测不到"不等于"没开岗"。公司相关描述为求职参考信息,不构成对任何公司的评价。
+Current openings and deadlines should be checked against the employer's official channels. An unsuccessful scan means that the opening could not be confirmed, not that no opening exists. This project is independent of the employers and recruitment platforms it references, and its recommendations are job-search guidance rather than guarantees of eligibility or employment.
 
 ## License
 
-MIT
+[MIT](LICENSE)
