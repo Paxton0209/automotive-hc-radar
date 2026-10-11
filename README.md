@@ -1,4 +1,4 @@
-# Automotive Design Hiring Radar
+# Auto Design Scout
 
 A Claude skill for automotive HMI and cockpit design students seeking internships and graduate roles. It connects career direction with current openings at automakers and suppliers, then helps set up reminders for new roles and approaching deadlines.
 
@@ -18,14 +18,14 @@ After the initial scan, you can choose a company scope and reminder frequency. A
 
 ## Use the skill
 
-For a Claude environment that supports custom skill uploads, download this repository and package `SKILL.md` and its `references/` directory together, following that environment's skill installation instructions. For Claude Code, place the repository folder at `~/.claude/skills/automotive-hc-radar/`, keeping `SKILL.md` at the folder root. The repository provides skill instructions and reference files; it is not a standalone recruitment application.
+For a Claude environment that supports custom skill uploads, download this repository and package `SKILL.md` and its `references/` directory together, following that environment's skill installation instructions. For Claude Code, place the repository folder at `~/.claude/skills/auto-design-scout/`, keeping `SKILL.md` at the folder root. The repository provides skill instructions and reference files; it is not a standalone recruitment application.
 
 You can start with: “Help me find automotive HMI design internships that fit my CV,” or “Check which automakers and suppliers are hiring graduate cockpit designers in my preferred cities.” The current skill and reference material are written in Chinese for the hiring market they cover; this public overview is in English.
 
 ## Repository structure
 
 ```text
-automotive-hc-radar/
+auto-design-scout/
 ├── SKILL.md                      # Workflow and operating rules
 ├── automotive-jobhunting.md      # Additional job-search material
 └── references/
